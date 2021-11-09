@@ -424,6 +424,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4916843049945613129}
   - component: {fileID: 8859699310390106177}
+  - component: {fileID: 592882213842210907}
+  - component: {fileID: 8691518781226618944}
   m_Layer: 0
   m_Name: astronautB
   m_TagString: Untagged
@@ -464,6 +466,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedPlayer: 5
+--- !u!54 &592882213842210907
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726311638448675315}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8691518781226618944
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726311638448675315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47963703, y: 0.7912602, z: 0.31277895}
+  m_Center: {x: -0.0015346706, y: 0.39757654, z: -0.02995053}
 --- !u!1 &9126604211667799904
 GameObject:
   m_ObjectHideFlags: 0
