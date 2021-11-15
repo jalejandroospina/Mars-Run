@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242230881250464639}
+  - component: {fileID: 5380765405527257885}
   m_Layer: 0
   m_Name: Alien_Coin
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &5380765405527257885
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906881689968445893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.6492786, y: 12.0662365, z: 1.1368358}
+  m_Center: {x: -0.115240924, y: -0.052139163, z: 1.0507565}
 --- !u!1 &6048471305411601068
 GameObject:
   m_ObjectHideFlags: 0
