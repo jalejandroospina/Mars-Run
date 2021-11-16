@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField] private float shipSpeed = 20f;
-    [SerializeField] private float timeLive =  5f;
+    [SerializeField] private float shipSpeed = 6f;
+    [SerializeField] private float timeLive = 9f;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +18,14 @@ public class ShipController : MonoBehaviour
     void Update()
     {
         moveForward(Vector3.forward);
-        autoDestruction();
+       autoDestruction();
     }
     private void moveForward(Vector3 direction)
     {
         transform.Translate(shipSpeed * direction * Time.deltaTime);
     }
 
-    private void autoDestruction()
+  private void autoDestruction()
     {
         timeLive -= Time.deltaTime;
         if(timeLive <= 0f)
@@ -32,6 +33,6 @@ public class ShipController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
 }
 

@@ -5,10 +5,6 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefab;
-    
-    
-    //rivate GameObject enemyGenerated;
-
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +15,8 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+      
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,12 +24,6 @@ public class SpawnController : MonoBehaviour
         Instantiate(enemyPrefab[enemyIndex], transform.position, enemyPrefab[enemyIndex].transform.rotation);
 
     }
-
-
-
-
-
-
 
 
 
