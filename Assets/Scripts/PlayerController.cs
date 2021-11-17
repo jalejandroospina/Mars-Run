@@ -13,13 +13,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]  private Animator animplayer;
     [SerializeField] private float sideSpeed = 3.0f;
     [SerializeField] private int difficulty;
+    //private int score = 0;
 
 
 
     void Start()
     {
-        SpawnCoins();
-        SelectDificult();
+      SpawnCoins();
+      SelectDificult();
     }
 
     // Update is called once per frame
@@ -39,7 +40,11 @@ public class PlayerController : MonoBehaviour
         {
             speedPlayer = 3.0f;
             SpawnCoins();
-            death = false;   
+            death = false;
+            GameManager.instance.scoreInstance = 0;
+           // score = 0;
+
+            
         }
 
     }
@@ -88,6 +93,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("coin"))
         {
             Destroy(other.gameObject);
+           GameManager.instance.GetScore();
+           GameManager.instance.addScore();
+           Debug.Log(GameManager.instance.GetScore());
+            //score += 1;
+            //Debug.Log(score);
         }
     }
 
@@ -99,6 +109,8 @@ public class PlayerController : MonoBehaviour
             transform.position = resetPosition;
             speedPlayer = 0f;
             death = true;
+           
+
         }
 
     }
@@ -108,7 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             case 1:
                 Debug.Log("Easy Mode");
-                speedPlayer = 3.0f;
+                speedPlayer =3.0f;
                 break;
             case 2:
                 Debug.Log("Normal Mode");
@@ -125,11 +137,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SpawnCoins()
+   private void SpawnCoins()
     {
         Instantiate(coins.gameObject);
     }
-
+   
+   
 
 
 }
