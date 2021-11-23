@@ -17,7 +17,7 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveForward(Vector3.forward);
+       moveForward(Vector3.forward);
        autoDestruction();
     }
     private void moveForward(Vector3 direction)

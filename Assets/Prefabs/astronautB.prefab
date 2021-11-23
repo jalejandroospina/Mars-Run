@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 592882213842210907}
   - component: {fileID: 6088129288181106836}
   - component: {fileID: 989880646233346482}
+  - component: {fileID: 1420258905208230423}
   m_Layer: 0
   m_Name: astronautB
   m_TagString: Untagged
@@ -53,6 +54,8 @@ MonoBehaviour:
   resetPosition: {x: 0, y: 0, z: 0}
   coins: {fileID: 0}
   animplayer: {fileID: 0}
+  sideSpeed: 3
+  difficulty: 0
 --- !u!54 &592882213842210907
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -178,6 +181,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1420258905208230423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726311638448675315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c916c698f1cdd4aa5fcc114ca27be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8409882789926974910
 PrefabInstance:
   m_ObjectHideFlags: 0

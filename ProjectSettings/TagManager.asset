@@ -6,6 +6,8 @@ TagManager:
   tags:
   - coin
   - Enemy
+  - jewel
+  - box
   layers:
   - Default
   - TransparentFX

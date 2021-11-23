@@ -13,7 +13,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]  private Animator animplayer;
     [SerializeField] private float sideSpeed = 3.0f;
     [SerializeField] private int difficulty;
-    //private int score = 0;
+    private ItemManager mgItem;
+    private int jewels = 0;
+    private int boxes = 0;
+
+
 
 
 
@@ -21,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
       SpawnCoins();
       SelectDificult();
+      mgItem = GetComponent<ItemManager>();
     }
 
     // Update is called once per frame
@@ -92,12 +97,29 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("coin"))
         {
-            Destroy(other.gameObject);
+           Destroy(other.gameObject);
            GameManager.instance.GetScore();
            GameManager.instance.addScore();
            Debug.Log(GameManager.instance.GetScore());
             //score += 1;
             //Debug.Log(score);
+        }
+        if (other.gameObject.CompareTag("jewel"))
+        {
+            GameObject jewel = other.gameObject;
+            jewel.SetActive(false);
+            mgItem.AddinventoryOne(jewel);
+            jewels++;
+            Debug.Log( "Numero de joyas"+""+jewels);
+
+
+        }
+        if (other.gameObject.CompareTag("box"))
+        {
+            GameObject box = other.gameObject;
+            box.SetActive(false);
+            boxes++;
+            Debug.Log("Numero de cajas" + "" + boxes);
         }
     }
 
