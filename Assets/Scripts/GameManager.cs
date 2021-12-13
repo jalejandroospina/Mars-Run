@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public int scoreInstance;
 
+    public enum Rewards {AlienCoin};
 
     private void Awake()
     {
@@ -24,13 +25,12 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+        PlayerController.OnDeath += GameOver;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GameOver()
     {
-        
+        scoreInstance = 0;
     }
 
     public void addScore()

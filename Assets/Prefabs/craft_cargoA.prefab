@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipSpeed: 6
   timeLive: 9
+  shipData: {fileID: 11400000, guid: 192b70a5d05f9f445bfd60bc6a92309a, type: 2}
 --- !u!82 &-2636212223507998177
 AudioSource:
   m_ObjectHideFlags: 0
@@ -129,7 +130,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

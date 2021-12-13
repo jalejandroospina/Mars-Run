@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4916843049945613129}
   - component: {fileID: 8859699310390106177}
   - component: {fileID: 592882213842210907}
-  - component: {fileID: 6088129288181106836}
   - component: {fileID: 989880646233346482}
   - component: {fileID: 1420258905208230423}
+  - component: {fileID: 1321305212}
+  - component: {fileID: 3417280055205353686}
   m_Layer: 0
   m_Name: astronautB
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,14 +49,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c35a687dc915b469195d15bb461ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedPlayer: 5
   death: 0
-  jumpForce: 0
   resetPosition: {x: 0, y: 0, z: 0}
-  coins: {fileID: 0}
-  animplayer: {fileID: 0}
-  sideSpeed: 3
-  difficulty: 0
+  coins: {fileID: 461537175002739408, guid: 6782fcf058a7ee046aa1ea7ca703fbfb, type: 3}
+  animplayer: {fileID: 1321305212}
+  difficulty: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  myData: {fileID: 0}
 --- !u!54 &592882213842210907
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -70,21 +72,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &6088129288181106836
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726311638448675315}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.18901396, y: 0.8604977, z: 0.18182793}
-  m_Center: {x: -0.00014555454, y: 0.42979503, z: 0.010959044}
 --- !u!82 &989880646233346482
 AudioSource:
   m_ObjectHideFlags: 0
@@ -193,6 +182,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c916c698f1cdd4aa5fcc114ca27be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewardsQuantity: 00000000
+--- !u!95 &1321305212
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726311638448675315}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: e47628c13866d4c43a5e13f4b9052c7c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7203b10242e136e4aaf37ea3f9158f77, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &3417280055205353686
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726311638448675315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05735975
+  m_Height: 0.8482825
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.41764155, z: 1.5}
 --- !u!1001 &8409882789926974910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e47628c13866d4c43a5e13f4b9052c7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e47628c13866d4c43a5e13f4b9052c7c, type: 3}
       propertyPath: m_LocalRotation.w

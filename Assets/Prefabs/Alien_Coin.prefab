@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1242230881250464639}
   - component: {fileID: 5380765405527257885}
+  - component: {fileID: -4418779336827915751}
   m_Layer: 0
   m_Name: Alien_Coin
   m_TagString: coin
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1906881689968445893}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0.595, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 8317667044440285103}
   m_Father: {fileID: 0}
@@ -45,6 +46,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.6492786, y: 12.0662365, z: 1.1368358}
   m_Center: {x: -0.115240924, y: -0.052139163, z: 1.0507565}
+--- !u!114 &-4418779336827915751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906881689968445893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f6cce3bd2152d42a7fb3d68ea9d8ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewards: 0
 --- !u!1 &6048471305411601068
 GameObject:
   m_ObjectHideFlags: 0

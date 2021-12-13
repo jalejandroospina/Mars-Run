@@ -18,7 +18,7 @@ public class SpawnController : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SpawnShip()
     {
         int enemyIndex = Random.Range(0, enemyPrefab.Length);
         Instantiate(enemyPrefab[enemyIndex], transform.position, enemyPrefab[enemyIndex].transform.rotation);
