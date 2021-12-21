@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6220463226476593121}
   - component: {fileID: 6565154194134820087}
   - component: {fileID: 762276870012932216}
+  - component: {fileID: 2198929377182586689}
   m_Layer: 0
   m_Name: knob
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2198929377182586689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3873086605276852209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5961286, y: 0.14514366, z: 0.6026459}
+  m_Center: {x: -0.00026589632, y: 0.022571832, z: -0.0006790161}
 --- !u!1 &4735008831566509932
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,9 +106,10 @@ GameObject:
   - component: {fileID: 5403741061273857494}
   - component: {fileID: 9030326692251738739}
   - component: {fileID: 6536654908818740921}
+  - component: {fileID: 3975455755763863632}
   m_Layer: 0
   m_Name: buttonSquare
-  m_TagString: Untagged
+  m_TagString: jump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,3 +178,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3975455755763863632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735008831566509932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.59999996, y: 0.099999994, z: 0.59999996}
+  m_Center: {x: 0, y: 0, z: 0}

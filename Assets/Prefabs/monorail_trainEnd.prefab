@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 941727687085174608}
   - component: {fileID: 4232939183994544373}
   - component: {fileID: 2115175096552477759}
+  - component: {fileID: 6646248614093301144}
   m_Layer: 0
   m_Name: monorail_trainEnd
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,3 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6646248614093301144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457784943778264554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.49999997, y: 0.79999995, z: 1.0496368}
+  m_Center: {x: 0, y: 0.39999998, z: -0.02481842}

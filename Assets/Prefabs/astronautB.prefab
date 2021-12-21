@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4916843049945613129}
   - component: {fileID: 8859699310390106177}
   - component: {fileID: 592882213842210907}
-  - component: {fileID: 989880646233346482}
   - component: {fileID: 1420258905208230423}
   - component: {fileID: 1321305212}
   - component: {fileID: 3417280055205353686}
+  - component: {fileID: 8144835819821492088}
   m_Layer: 0
   m_Name: astronautB
   m_TagString: Player
@@ -49,15 +49,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c35a687dc915b469195d15bb461ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  death: 0
   resetPosition: {x: 0, y: 0, z: 0}
-  coins: {fileID: 461537175002739408, guid: 6782fcf058a7ee046aa1ea7ca703fbfb, type: 3}
   animplayer: {fileID: 1321305212}
   difficulty: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   myData: {fileID: 0}
+  sound: []
 --- !u!54 &592882213842210907
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74,7 +73,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!82 &989880646233346482
+--- !u!114 &1420258905208230423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726311638448675315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c916c698f1cdd4aa5fcc114ca27be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardsQuantity: 00000000
+--- !u!95 &1321305212
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726311638448675315}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: e47628c13866d4c43a5e13f4b9052c7c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7203b10242e136e4aaf37ea3f9158f77, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &3417280055205353686
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726311638448675315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05735975
+  m_Height: 0.8482825
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.41764155, z: 1.5}
+--- !u!82 &8144835819821492088
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,11 +129,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 819ffce29dbcbea4b8881283f0bc317c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -170,52 +215,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1420258905208230423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726311638448675315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c916c698f1cdd4aa5fcc114ca27be7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewardsQuantity: 00000000
---- !u!95 &1321305212
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726311638448675315}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e47628c13866d4c43a5e13f4b9052c7c, type: 3}
-  m_Controller: {fileID: 9100000, guid: 7203b10242e136e4aaf37ea3f9158f77, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &3417280055205353686
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726311638448675315}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.05735975
-  m_Height: 0.8482825
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.41764155, z: 1.5}
 --- !u!1001 &8409882789926974910
 PrefabInstance:
   m_ObjectHideFlags: 0

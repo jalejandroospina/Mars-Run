@@ -10,17 +10,17 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    
-    [SerializeField] private Vector3 resetPosition = (new Vector3 (0, 0, 0));
-    [SerializeField] private GameObject coins;
+
+   // [SerializeField] private Vector3 resetPosition = (new Vector3(0, 0, 0));
+    // [SerializeField] private GameObject coins;
     [SerializeField] private Animator animplayer;
     [SerializeField] private int difficulty;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] protected PlayerData myData;
     private Rigidbody rb;
     private ItemManager mgItem;
-    private int jewels = 0;
-    private int boxes = 0;
+    //private int jewels = 0;
+    //private int boxes = 0;
 
     //Events
     public static event Action OnDeath;
@@ -33,9 +33,9 @@ public class PlayerController : MonoBehaviour
     {
 
         //SelectDificult();
-        myData.SetSpeed(5);
+        myData.SetSpeed(6);  // Corregir seteo de variable !!!!!!!!
         rb = GetComponent<Rigidbody>();
-      mgItem = GetComponent<ItemManager>();
+        mgItem = GetComponent<ItemManager>();
        // onCollect?.Invoke(coins);
     }
 
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         
         transform.position =  transform.position += direction * myData.SpeedPlayer * Time.deltaTime;
-
+        
         
     }
 
@@ -64,11 +64,11 @@ public class PlayerController : MonoBehaviour
         {      
             if (!IsGrounded())
             {
-                rb.AddForce(-92, 0, 0);
+               // rb.AddForce(-90, 0, 0);
             }
             else
             {  
-                rb.AddForce(-200,0, 0);
+                rb.AddForce(-180,0, 0);
             }
         }
 
@@ -76,11 +76,11 @@ public class PlayerController : MonoBehaviour
         {
             if (!IsGrounded())
             {
-                rb.AddForce(92, 0, 0);
+               // rb.AddForce(90, 0, 0);
             }
             else
             {
-                rb.AddForce(200, 0, 0);
+                rb.AddForce(180, 0, 0);
             }
         }
     }
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
             if (IsGrounded())
             {
-                rb.AddForce(0,1* myData.PlayerJumpForce, 0);
+                rb.AddForce(0, 1* myData.PlayerJumpForce, 0);
             }  
         }
         else
@@ -133,32 +133,43 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("coin"))
         {
             GameObject coin = other.gameObject;
-            coin.SetActive(false);
+            // coin.SetActive(false);
             mgItem.AddinventoryOne(coin);
             mgItem.GetInventoryOne();
             mgItem.countRewards(coin);
+            Destroy(other.gameObject);
            
             
         }
         if (other.gameObject.CompareTag("jewel"))
         {
             GameObject jewel = other.gameObject;
-            jewel.SetActive(false);
+            //jewel.SetActive(false);
             mgItem.AddinventoryOne(jewel);
-            jewels++;
-            
-            Debug.Log( "Numero de joyas"+""+jewels);
-
+            mgItem.GetInventoryOne();
+            mgItem.countRewards(jewel);
+            Destroy(other.gameObject);
 
         }
+
         if (other.gameObject.CompareTag("box"))
         {
             GameObject box = other.gameObject;
-            box.SetActive(false);
-            boxes++;
-            Debug.Log("Numero de cajas" + "" + boxes);
+            //jewel.SetActive(false);
+            mgItem.AddinventoryOne(box);
+            mgItem.GetInventoryOne();
+            mgItem.countRewards(box);
+            Destroy(other.gameObject);
+
         }
-       
+
+        
+        if (other.gameObject.CompareTag("jump"))
+        {
+            animplayer.SetBool("IsJump", true);
+            rb.AddForce(0, 1 * myData.PlayerJumpForce, 0);
+        }
+
     }
   
    
@@ -173,14 +184,14 @@ public class PlayerController : MonoBehaviour
             animplayer.Play("Death");
             
             OnDeath?.Invoke();
-           StartCoroutine(Restart());
+            StartCoroutine(Restart());
 
         }
     }
     IEnumerator Restart()
     {
         
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         
         SceneManager.LoadScene("GameOver");
     }

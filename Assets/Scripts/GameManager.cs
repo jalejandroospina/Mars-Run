@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public int scoreInstance;
 
-    public enum Rewards {AlienCoin};
+    public enum Rewards {AlienCoin , Jewel, Box};
 
     private void Awake()
     {

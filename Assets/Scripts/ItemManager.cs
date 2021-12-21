@@ -9,10 +9,12 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] private Stack inventoryOne;
 
-    [SerializeField] private int[] rewardsQuantity = { 0 };
+    [SerializeField] private int[] coinsQuantity = { 0 };
+    [SerializeField] private int[] jewelsQuantity = { 0 };
+    [SerializeField] private int[] boxesQuantity = { 0 };
 
     //Events
-    
+
 
     void Start()
     {
@@ -26,9 +28,19 @@ public class ItemManager : MonoBehaviour
 
     }
 
-    public int[] GetRewardsQuantity()
+    public int[] GetCoinsQuantity()
     {
-        return rewardsQuantity;
+        return coinsQuantity;
+    }
+
+    public int[] GetJewelsQuantity()
+    {
+        return jewelsQuantity;
+    }
+
+    public int[] GetBoxesQuantity()
+    {
+        return boxesQuantity;
     }
 
     public void countRewards(GameObject reward)
@@ -38,7 +50,13 @@ public class ItemManager : MonoBehaviour
         switch (r.GetReward())
         {
             case GameManager.Rewards.AlienCoin:
-                rewardsQuantity[0]++;
+                coinsQuantity[0]++;
+                break;
+            case GameManager.Rewards.Jewel:
+                jewelsQuantity[0]++;
+                break;
+            case GameManager.Rewards.Box:
+                boxesQuantity[0]++;
                 break;
             default:
                 Debug.Log("No es una recompensa");
@@ -57,6 +75,7 @@ public class ItemManager : MonoBehaviour
 
     }
 
-
-
 }
+
+
+

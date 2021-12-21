@@ -25,6 +25,13 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
-
+    public void OnClickMainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void OnClickPlayAgainButton()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 
 }

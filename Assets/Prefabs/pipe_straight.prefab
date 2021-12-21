@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7922683325794905825}
   - component: {fileID: 6511322254069293380}
   - component: {fileID: 9059037236254053774}
-  m_Layer: 0
+  - component: {fileID: 3816353815895971762}
+  m_Layer: 6
   m_Name: pipe_straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7401901483582174299}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.05, y: 0.00000013411045, z: 237.15}
-  m_LocalScale: {x: 1, y: 1, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3816353815895971762
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401901483582174299}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.69282037, y: 0.59999996, z: 0.99999994}
+  m_Center: {x: 0, y: 0.29999998, z: 0}

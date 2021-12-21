@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] private Text textAlienCoin;
+    [SerializeField] private Text textJewels;
+    [SerializeField] private Text textBoxes;
     [SerializeField] private Text textTime;
     [SerializeField] private Text textDistance;
     [SerializeField] protected PlayerData myData;
@@ -27,15 +29,32 @@ public class HUDController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateRewardsUI();
+        UpdateCoinsUI();
+        UpdateJewelsUI();
+        UpdateBoxesUI();
         Statistics();
     }
 
-    void UpdateRewardsUI()
+    void UpdateCoinsUI()
     {
-        int[] rewardsCount = mgItem.GetRewardsQuantity();
+        int[] rewardsCount = mgItem.GetCoinsQuantity();
         textAlienCoin.text =  rewardsCount[0].ToString();
+        
     }
+    void UpdateJewelsUI()
+    {
+        int[] rewardsCount = mgItem.GetJewelsQuantity();
+        textJewels.text = rewardsCount[0].ToString();
+
+    }
+    void UpdateBoxesUI()
+    {
+        int[] rewardsCount = mgItem.GetBoxesQuantity();
+        textBoxes.text = rewardsCount[0].ToString();
+
+    }
+
+
 
     void Statistics()
     {
