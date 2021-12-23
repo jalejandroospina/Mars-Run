@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3626588319213175762}
   - component: {fileID: 431185896873086071}
   - component: {fileID: 2458708111047243965}
+  - component: {fileID: 7052615483671196394}
   m_Layer: 0
   m_Name: hangar_largeB
   m_TagString: Untagged
@@ -169,6 +170,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7052615483671196394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4116266352203274600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1999998, y: 1.0999999, z: 2.9999998}
+  m_Center: {x: 0, y: 0.54999995, z: 0}
 --- !u!1 &8475491906959006382
 GameObject:
   m_ObjectHideFlags: 0

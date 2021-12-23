@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Run (Vector3 direction)
     {
-        
+        Debug.Log(myData.SpeedPlayer);
         transform.position =  transform.position += direction * myData.SpeedPlayer * Time.deltaTime;
         
         
@@ -169,6 +169,25 @@ public class PlayerController : MonoBehaviour
             animplayer.SetBool("IsJump", true);
             rb.AddForce(0, 1 * myData.PlayerJumpForce, 0);
         }
+        if (other.gameObject.CompareTag("jumpx3"))
+        {
+            animplayer.SetBool("IsJump", true);
+            rb.AddForce(0, 2 * myData.PlayerJumpForce, 0);
+        }
+        if (other.gameObject.CompareTag("key"))
+        {
+            
+            Destroy(other.gameObject);
+
+        }
+        if (other.gameObject.CompareTag("door"))
+        {
+
+            SceneManager.LoadScene("Stage2");
+            myData.SetSpeed(10);
+
+        }
+        
 
     }
   
@@ -201,6 +220,10 @@ public class PlayerController : MonoBehaviour
 
         transform.position = transform.position += direction * myData.SpeedPlayer * Time.deltaTime;
     }
+
+    
+        
+    
     /*
     private void SelectDificult()
     {

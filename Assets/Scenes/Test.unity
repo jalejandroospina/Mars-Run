@@ -3384,8 +3384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textAlienCoin: {fileID: 475389862}
-  textJewels: {fileID: 0}
-  textBoxes: {fileID: 0}
+  textJewels: {fileID: 2089622966}
+  textBoxes: {fileID: 1780896062}
   textTime: {fileID: 1637527304}
   textDistance: {fileID: 470246118}
   myData: {fileID: 11400000, guid: e87b4ae673ac53a46a2dc3af47d7b2cc, type: 2}

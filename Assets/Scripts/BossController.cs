@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private float distanceRay = 3f;
+    [SerializeField] private float distanceRay = 6f;
     [SerializeField] private GameObject boss;
     [SerializeField] private GameObject bossSpawner;
 
@@ -24,7 +24,7 @@ public class BossController : MonoBehaviour
         RaycastHit hit;
 
 
-        if (Physics.Raycast(transform.position,transform.TransformDirection(Vector3.back),out hit , distanceRay)) 
+        if (Physics.Raycast(transform.position,transform.TransformDirection(Vector3.right),out hit , distanceRay)) 
         {
             if (hit.transform.tag == "Player")
             {
@@ -36,7 +36,7 @@ public class BossController : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Vector3 direction = bossSpawner.transform.TransformDirection(Vector3.back) * distanceRay;
+        Vector3 direction = bossSpawner.transform.TransformDirection(Vector3.right) * distanceRay;
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, direction);
     }

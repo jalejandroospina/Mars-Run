@@ -9,6 +9,9 @@ TagManager:
   - jewel
   - box
   - jump
+  - key
+  - jumpx3
+  - door
   layers:
   - Default
   - TransparentFX
