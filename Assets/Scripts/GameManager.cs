@@ -25,13 +25,17 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        PlayerController.OnDeath += GameOver;
+        PlayerController.OnDeath += OnDeathHandler;
+        
     }
 
-    public void GameOver()
+    public void OnDeathHandler()
     {
         scoreInstance = 0;
+        
     }
+    
+
 
     public void addScore()
     {

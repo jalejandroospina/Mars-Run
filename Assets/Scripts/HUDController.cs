@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HUDController : MonoBehaviour
 {
+    
+
     [SerializeField] private Text textAlienCoin;
     [SerializeField] private Text textJewels;
     [SerializeField] private Text textBoxes;
@@ -12,18 +15,37 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Text textDistance;
     [SerializeField] protected PlayerData myData;
     [SerializeField] private ItemManager mgItem;
+    [SerializeField] private GameObject mainPanel;
+    [SerializeField] private GameObject GOPanel;
+
+
     private float distance;
     private float time;
+    private bool timeOn;
 
 
 
     // Start is called before the first frame update
 
    
+    
+    void OnDestroy()
+    {
+     //PlayerController.OnDeath -= OnDeathHandler;
+    }
+    
+
 
     void Start()
     {
+
+        PlayerController.OnDeath += OnDeathHandler;
+        mainPanel.SetActive(true);
+        GOPanel.SetActive(false);
+        timeOn = true;
         
+        
+
     }
 
     // Update is called once per frame
@@ -35,11 +57,15 @@ public class HUDController : MonoBehaviour
         Statistics();
     }
 
+
+
+
+
     void UpdateCoinsUI()
     {
         int[] rewardsCount = mgItem.GetCoinsQuantity();
-        textAlienCoin.text =  rewardsCount[0].ToString();
-        
+        textAlienCoin.text = rewardsCount[0].ToString();
+
     }
     void UpdateJewelsUI()
     {
@@ -58,13 +84,37 @@ public class HUDController : MonoBehaviour
 
     void Statistics()
     {
-        distance +=  myData.SpeedPlayer * Time.deltaTime ;
+        distance += myData.SpeedPlayer * Time.deltaTime;
         textDistance.text = ((int)distance).ToString();
 
-        time += Time.deltaTime;
+        if (timeOn==true) 
+        {
+            time += Time.deltaTime;
+        }
+
         int minutes = (int)time / 60;
         int seconds = (int)time % 60;
-        textTime.text = minutes.ToString() + ":" + seconds.ToString().PadLeft(2,'0');
-
+        textTime.text = minutes.ToString() + ":" + seconds.ToString().PadLeft(2, '0');
+        
     }
+
+    public void OnDeathHandler()
+    {
+        mainPanel.SetActive(false);
+        GOPanel.SetActive(true);
+        timeOn = false;
+        PlayerController.OnDeath -= OnDeathHandler;
+    }
+
+
+
+    public void OnClickPlayAgainButton()
+     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+       
+    }
+   
+
+
+
 }

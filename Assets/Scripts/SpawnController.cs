@@ -5,11 +5,12 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefab;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class SpawnController : MonoBehaviour
         int enemyIndex = Random.Range(0, enemyPrefab.Length);
         Instantiate(enemyPrefab[enemyIndex], transform.position, enemyPrefab[enemyIndex].transform.rotation);
         ShipsName(enemyIndex);
+        
     }
 
     private void ShipsName( int enemyIndex)

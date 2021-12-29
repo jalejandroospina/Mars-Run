@@ -8,54 +8,61 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
 
-
-   // [SerializeField] private Vector3 resetPosition = (new Vector3(0, 0, 0));
-    // [SerializeField] private GameObject coins;
     [SerializeField] private Animator animplayer;
     [SerializeField] private int difficulty;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] protected PlayerData myData;
+    [SerializeField] protected AudioClip jump;
+    [SerializeField] protected AudioClip run;
+    [SerializeField] protected AudioClip crash;
+    [SerializeField] protected AudioClip slide;
+    [SerializeField] protected AudioClip coinfx;
+    [SerializeField] protected AudioClip jewelfx;
+    [SerializeField] protected AudioClip boxfx;
+
     private Rigidbody rb;
     private ItemManager mgItem;
-    //private int jewels = 0;
-    //private int boxes = 0;
+    
 
     //Events
     public static event Action OnDeath;
-  
     
-    //public static event Action<int> onCollect;
+
+  
 
 
     void Start()
     {
 
-        //SelectDificult();
-        myData.SetSpeed(6);  // Corregir seteo de variable !!!!!!!!
+
+        
+
+       myData.SetSpeed(6);  // Corregir seteo de variable !!!!!!!!
+        
         rb = GetComponent<Rigidbody>();
         mgItem = GetComponent<ItemManager>();
-       // onCollect?.Invoke(coins);
+        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         Run(Vector3.forward);
-        
         MoveSide();
         Jump();
         Slide();
-        death(Vector3.zero);
-      
+       
+
     }
     private void Run (Vector3 direction)
     {
         Debug.Log(myData.SpeedPlayer);
+       
         transform.position =  transform.position += direction * myData.SpeedPlayer * Time.deltaTime;
         
-        
+
     }
 
     public virtual void MoveSide()
@@ -91,6 +98,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {         
             animplayer.SetBool("IsJump", true);
+            GetComponent<AudioSource>().PlayOneShot(jump);
 
             if (IsGrounded())
             {
@@ -106,7 +114,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
+            
             animplayer.SetBool("IsSlide", true);
+            GetComponent<AudioSource>().PlayOneShot(slide);
         }
         else
         {
@@ -132,8 +142,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("coin"))
         {
+            GetComponent<AudioSource>().PlayOneShot(coinfx);
             GameObject coin = other.gameObject;
-            // coin.SetActive(false);
             mgItem.AddinventoryOne(coin);
             mgItem.GetInventoryOne();
             mgItem.countRewards(coin);
@@ -143,8 +153,8 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("jewel"))
         {
+            GetComponent<AudioSource>().PlayOneShot(jewelfx);
             GameObject jewel = other.gameObject;
-            //jewel.SetActive(false);
             mgItem.AddinventoryOne(jewel);
             mgItem.GetInventoryOne();
             mgItem.countRewards(jewel);
@@ -154,8 +164,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("box"))
         {
+            GetComponent<AudioSource>().PlayOneShot(boxfx);
             GameObject box = other.gameObject;
-            //jewel.SetActive(false);
             mgItem.AddinventoryOne(box);
             mgItem.GetInventoryOne();
             mgItem.countRewards(box);
@@ -198,71 +208,31 @@ public class PlayerController : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Enemy"))
         {
-
+            GetComponent<AudioSource>().PlayOneShot(crash);
             myData.SetSpeed(0);
             animplayer.Play("Death");
+
             
-            OnDeath?.Invoke();
             StartCoroutine(Restart());
+            
 
         }
     }
     IEnumerator Restart()
     {
         
-        yield return new WaitForSeconds(2f);
-        
-        SceneManager.LoadScene("GameOver");
+        yield return new WaitForSeconds(1f);
+        OnDeath?.Invoke();
+       
+
     }
 
-    private void death(Vector3 direction)
-    {
-
-        transform.position = transform.position += direction * myData.SpeedPlayer * Time.deltaTime;
-    }
+    
 
     
         
     
-    /*
-    private void SelectDificult()
-    {
-        switch (difficulty)
-        {
-            case 1:
-                Debug.Log("Easy Mode");
-                myData.SpeedPlayer + 3.0f;
-                break;
-            case 2:
-                Debug.Log("Normal Mode");
-                speedPlayer = 3.5f;
-                break;
-            case 3:
-                Debug.Log("Hard Mode");
-                speedPlayer = 4.0f;
-                break;
-
-            default:
-                speedPlayer = 3.0f;
-                break;
-        }
-    }
-
-    
-    public float GetSpeedPlayer()
-    {
-        return myData.SpeedPlayer;
-    }
-    public Vector3 GetPlayerPosition()
-    {
-        return resetPosition;
-    }
-
-    public bool GetPlayerEstate()
-    {
-        return death;
-    }
-    */
+   
 
 
 
