@@ -37,7 +37,7 @@ public class BossController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Vector3 direction = bossSpawner.transform.TransformDirection(Vector3.right) * distanceRay;
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, direction);
     }
 }

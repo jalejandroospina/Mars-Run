@@ -13,7 +13,7 @@ public class ShipController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audiofx = GetComponent<AudioSource>();
+       // audiofx = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class ShipController : MonoBehaviour
     private void moveForward(Vector3 direction)
     {
         transform.Translate(shipSpeed * direction * Time.deltaTime);
-        audiofx.Play();
+      //  audiofx.Play();
     }
 
   private void autoDestruction()

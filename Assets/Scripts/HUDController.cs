@@ -17,11 +17,10 @@ public class HUDController : MonoBehaviour
     [SerializeField] private ItemManager mgItem;
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject GOPanel;
+    [SerializeField] private PlayerController player;
 
 
-    private float distance;
-    private float time;
-    private bool timeOn;
+    
 
 
 
@@ -33,16 +32,21 @@ public class HUDController : MonoBehaviour
     {
      //PlayerController.OnDeath -= OnDeathHandler;
     }
-    
+    private void Awake()
+    {
+        PlayerController.OnDeath += OnDeathHandler;
+    }
+
 
 
     void Start()
     {
 
-        PlayerController.OnDeath += OnDeathHandler;
+        
+        
         mainPanel.SetActive(true);
         GOPanel.SetActive(false);
-        timeOn = true;
+       
         
         
 
@@ -84,25 +88,16 @@ public class HUDController : MonoBehaviour
 
     void Statistics()
     {
-        distance += myData.SpeedPlayer * Time.deltaTime;
-        textDistance.text = ((int)distance).ToString();
-
-        if (timeOn==true) 
-        {
-            time += Time.deltaTime;
-        }
-
-        int minutes = (int)time / 60;
-        int seconds = (int)time % 60;
-        textTime.text = minutes.ToString() + ":" + seconds.ToString().PadLeft(2, '0');
         
+        textTime.text = player.GetTime();
+        textDistance.text = player.GetDistance();
+
     }
 
     public void OnDeathHandler()
     {
-        mainPanel.SetActive(false);
         GOPanel.SetActive(true);
-        timeOn = false;
+        mainPanel.SetActive(false);
         PlayerController.OnDeath -= OnDeathHandler;
     }
 
@@ -110,10 +105,13 @@ public class HUDController : MonoBehaviour
 
     public void OnClickPlayAgainButton()
      {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-       
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+     }
+    public void OnClickMainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
-   
+
 
 
 

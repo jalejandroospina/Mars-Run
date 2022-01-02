@@ -13425,6 +13425,7 @@ Transform:
   - {fileID: 1458100880}
   - {fileID: 1136936699}
   - {fileID: 1041475028}
+  - {fileID: 1989059388}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14117,6 +14118,8 @@ MonoBehaviour:
   textDistance: {fileID: 470246118}
   myData: {fileID: 11400000, guid: e87b4ae673ac53a46a2dc3af47d7b2cc, type: 2}
   mgItem: {fileID: 1321305209}
+  mainPanel: {fileID: 0}
+  GOPanel: {fileID: 0}
 --- !u!4 &1796731484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8626305929605320498, guid: 9439d08f5dbbe0243b5598de9cfbbecd, type: 3}
@@ -15628,9 +15631,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989059387}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.802, y: -1.14, z: 13.53}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.4966664, y: 2.337334, z: 1.3726667}
+  m_LocalScale: {x: 0.33333325, y: 0.33333325, z: 0.33333334}
   m_Children:
   - {fileID: 1531801126}
   - {fileID: 1175249768}
@@ -15702,8 +15705,8 @@ Transform:
   - {fileID: 924072249}
   - {fileID: 1005496908}
   - {fileID: 1261610135}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 1731453192}
+  m_RootOrder: 133
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2001875877
 PrefabInstance:

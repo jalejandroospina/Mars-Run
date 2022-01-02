@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private InputField startButton;
+    [SerializeField] private InputField backButton;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,21 @@ public class MainMenuController : MonoBehaviour
     public void OnClickPlayAgainButton()
     {
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void OnClickBackButton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnClickControlButton()
+    {
+        SceneManager.LoadScene("ControllersMenu");
+    }
+
+    public void OnClickCreditsButton()
+    {
+        SceneManager.LoadScene("CreditsMenu");
     }
 
 }

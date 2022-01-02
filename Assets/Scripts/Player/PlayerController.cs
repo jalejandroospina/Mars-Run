@@ -13,17 +13,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int difficulty;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] protected PlayerData myData;
-    [SerializeField] protected AudioClip jump;
-    [SerializeField] protected AudioClip run;
-    [SerializeField] protected AudioClip crash;
-    [SerializeField] protected AudioClip slide;
-    [SerializeField] protected AudioClip coinfx;
-    [SerializeField] protected AudioClip jewelfx;
-    [SerializeField] protected AudioClip boxfx;
-
+    /*  [SerializeField] protected AudioClip jump;
+      [SerializeField] protected AudioSource run;
+      [SerializeField] protected AudioClip crash;
+      [SerializeField] protected AudioClip slide;
+      [SerializeField] protected AudioClip coinfx;
+      [SerializeField] protected AudioClip jewelfx;
+      [SerializeField] protected AudioClip boxfx;
+      */
+    [SerializeField] protected SoundManager soundManager;
     private Rigidbody rb;
     private ItemManager mgItem;
-    
+
+    private float distance;
+    private float time;
+    private string score;
+    private string tm;
+    private bool timeOn;
+
 
     //Events
     public static event Action OnDeath;
@@ -37,13 +44,13 @@ public class PlayerController : MonoBehaviour
 
 
         
-
-       myData.SetSpeed(6);  // Corregir seteo de variable !!!!!!!!
-        
+       
+        myData.SetSpeed(6);  // Corregir seteo de variable !!!!!!!!
         rb = GetComponent<Rigidbody>();
         mgItem = GetComponent<ItemManager>();
-        
-       
+        timeOn = true;
+
+
     }
 
     // Update is called once per frame
@@ -53,13 +60,15 @@ public class PlayerController : MonoBehaviour
         MoveSide();
         Jump();
         Slide();
-       
+        Statistics();
+
+
 
     }
     private void Run (Vector3 direction)
     {
         Debug.Log(myData.SpeedPlayer);
-       
+        
         transform.position =  transform.position += direction * myData.SpeedPlayer * Time.deltaTime;
         
 
@@ -98,7 +107,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {         
             animplayer.SetBool("IsJump", true);
-            GetComponent<AudioSource>().PlayOneShot(jump);
+            
+
 
             if (IsGrounded())
             {
@@ -116,7 +126,7 @@ public class PlayerController : MonoBehaviour
         {
             
             animplayer.SetBool("IsSlide", true);
-            GetComponent<AudioSource>().PlayOneShot(slide);
+           // GetComponent<AudioSource>().PlayOneShot(slide);
         }
         else
         {
@@ -142,7 +152,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("coin"))
         {
-            GetComponent<AudioSource>().PlayOneShot(coinfx);
+           // GetComponent<AudioSource>().PlayOneShot(coinfx);
             GameObject coin = other.gameObject;
             mgItem.AddinventoryOne(coin);
             mgItem.GetInventoryOne();
@@ -153,7 +163,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("jewel"))
         {
-            GetComponent<AudioSource>().PlayOneShot(jewelfx);
+           // GetComponent<AudioSource>().PlayOneShot(jewelfx);
             GameObject jewel = other.gameObject;
             mgItem.AddinventoryOne(jewel);
             mgItem.GetInventoryOne();
@@ -164,7 +174,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("box"))
         {
-            GetComponent<AudioSource>().PlayOneShot(boxfx);
+           // GetComponent<AudioSource>().PlayOneShot(boxfx);
             GameObject box = other.gameObject;
             mgItem.AddinventoryOne(box);
             mgItem.GetInventoryOne();
@@ -190,15 +200,23 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
 
         }
-        if (other.gameObject.CompareTag("door"))
+        if (other.gameObject.CompareTag("Speed1"))
+        { 
+            myData.SetSpeed(7);
+        }
+        if (other.gameObject.CompareTag("Speed2"))
         {
-
-            SceneManager.LoadScene("Stage2");
-            myData.SetSpeed(10);
-
+            myData.SetSpeed(8);
+        }
+        if (other.gameObject.CompareTag("Speed3"))
+        {
+            myData.SetSpeed(9);
         }
         
-
+        if (other.gameObject.CompareTag("finish"))
+        {
+            SceneManager.LoadScene("CreditsMenu");
+        }
     }
   
    
@@ -208,7 +226,8 @@ public class PlayerController : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            GetComponent<AudioSource>().PlayOneShot(crash);
+         //   GetComponent<AudioSource>().PlayOneShot(crash);
+            timeOn = false;
             myData.SetSpeed(0);
             animplayer.Play("Death");
 
@@ -226,13 +245,38 @@ public class PlayerController : MonoBehaviour
        
 
     }
+    void Statistics()
+    {
+        distance += myData.SpeedPlayer * Time.deltaTime;
+        score = ((int)distance).ToString();
 
-    
+        if (timeOn == true)
+        {
+            time += Time.deltaTime;
+        }
 
-    
-        
-    
-   
+        int minutes = (int)time / 60;
+        int seconds = (int)time % 60;
+        tm = minutes.ToString() + ":" + seconds.ToString().PadLeft(2, '0');
+
+    }
+    public  string  GetDistance()
+    {
+        return score;
+           
+    }
+    public  string GetTime()
+    {
+        return tm;
+
+    }
+
+
+
+
+
+
+
 
 
 

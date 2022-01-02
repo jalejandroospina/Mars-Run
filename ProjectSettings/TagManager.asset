@@ -11,17 +11,21 @@ TagManager:
   - jump
   - key
   - jumpx3
-  - door
+  - Speed1
+  - Speed2
+  - Speed3
+  - ground
+  - finish
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Limit
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Meteor
+  - GlobalPostProcessing
   - 
   - 
   - 
