@@ -6,6 +6,9 @@ public class MeteorController : MonoBehaviour
 {
     [SerializeField] private GameObject meteorPrefab;
 
+    [SerializeField] protected AudioClip asteroidFX;
+    [SerializeField] protected AudioSource asteroidSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,7 @@ public class MeteorController : MonoBehaviour
     {
         //int meteorIndex = Random.Range(0, meteorPrefab.Length);
         Instantiate(meteorPrefab, transform.position, meteorPrefab.transform.rotation);
-        
+        asteroidSource.PlayOneShot(asteroidFX);
     }
 
 

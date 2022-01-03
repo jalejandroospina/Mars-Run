@@ -13,15 +13,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int difficulty;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] protected PlayerData myData;
-    /*  [SerializeField] protected AudioClip jump;
-      [SerializeField] protected AudioSource run;
-      [SerializeField] protected AudioClip crash;
-      [SerializeField] protected AudioClip slide;
-      [SerializeField] protected AudioClip coinfx;
-      [SerializeField] protected AudioClip jewelfx;
-      [SerializeField] protected AudioClip boxfx;
-      */
-    [SerializeField] protected SoundManager soundManager;
+    
+
+    [SerializeField] protected AudioSource playerAudioSource;
+    [SerializeField] protected AudioSource Runsfx;
+    // [SerializeField] protected AudioSource  run;
+
+
+    [SerializeField] protected AudioClip jump;
+    [SerializeField] protected AudioClip crash;
+    [SerializeField] protected AudioClip slide;
+    [SerializeField] protected AudioClip coinfx;
+    [SerializeField] protected AudioClip jewelfx;
+    [SerializeField] protected AudioClip boxfx;
+      
+    //[SerializeField] protected SoundManager soundManager;
     private Rigidbody rb;
     private ItemManager mgItem;
 
@@ -34,9 +40,9 @@ public class PlayerController : MonoBehaviour
 
     //Events
     public static event Action OnDeath;
-    
+    public static event Action OnFinish;
 
-  
+
 
 
     void Start()
@@ -68,7 +74,6 @@ public class PlayerController : MonoBehaviour
     private void Run (Vector3 direction)
     {
         Debug.Log(myData.SpeedPlayer);
-        
         transform.position =  transform.position += direction * myData.SpeedPlayer * Time.deltaTime;
         
 
@@ -112,6 +117,7 @@ public class PlayerController : MonoBehaviour
 
             if (IsGrounded())
             {
+                playerAudioSource.PlayOneShot(jump);
                 rb.AddForce(0, 1* myData.PlayerJumpForce, 0);
             }  
         }
@@ -126,7 +132,7 @@ public class PlayerController : MonoBehaviour
         {
             
             animplayer.SetBool("IsSlide", true);
-           // GetComponent<AudioSource>().PlayOneShot(slide);
+           playerAudioSource.PlayOneShot(slide);
         }
         else
         {
@@ -152,7 +158,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("coin"))
         {
-           // GetComponent<AudioSource>().PlayOneShot(coinfx);
+            playerAudioSource.PlayOneShot(coinfx);
             GameObject coin = other.gameObject;
             mgItem.AddinventoryOne(coin);
             mgItem.GetInventoryOne();
@@ -163,7 +169,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("jewel"))
         {
-           // GetComponent<AudioSource>().PlayOneShot(jewelfx);
+            playerAudioSource.PlayOneShot(jewelfx);
             GameObject jewel = other.gameObject;
             mgItem.AddinventoryOne(jewel);
             mgItem.GetInventoryOne();
@@ -174,7 +180,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("box"))
         {
-           // GetComponent<AudioSource>().PlayOneShot(boxfx);
+            playerAudioSource.PlayOneShot(boxfx);
             GameObject box = other.gameObject;
             mgItem.AddinventoryOne(box);
             mgItem.GetInventoryOne();
@@ -187,12 +193,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("jump"))
         {
             animplayer.SetBool("IsJump", true);
-            rb.AddForce(0, 1 * myData.PlayerJumpForce, 0);
+            rb.AddForce(0, 1.2f * myData.PlayerJumpForce, 0);
         }
         if (other.gameObject.CompareTag("jumpx3"))
         {
             animplayer.SetBool("IsJump", true);
-            rb.AddForce(0, 2 * myData.PlayerJumpForce, 0);
+            rb.AddForce(0, 2.5f * myData.PlayerJumpForce, 0);
         }
         if (other.gameObject.CompareTag("key"))
         {
@@ -212,28 +218,38 @@ public class PlayerController : MonoBehaviour
         {
             myData.SetSpeed(9);
         }
-        
-        if (other.gameObject.CompareTag("finish"))
+        if (other.gameObject.CompareTag("Finish"))
+
         {
-            SceneManager.LoadScene("CreditsMenu");
+            animplayer.SetBool("IsJump", true);
+            
+            
+            timeOn = false;
+            myData.SetSpeed(0);
+            Runsfx.Stop();
+            StartCoroutine(finish());
+
         }
+
+
+
     }
   
    
     private void OnCollisionEnter(Collision collision)
     {
-
         
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
-         //   GetComponent<AudioSource>().PlayOneShot(crash);
+            Runsfx.Stop();
+            playerAudioSource.PlayOneShot(crash);
             timeOn = false;
             myData.SetSpeed(0);
             animplayer.Play("Death");
-
-            
             StartCoroutine(Restart());
             
+
 
         }
     }
@@ -242,9 +258,24 @@ public class PlayerController : MonoBehaviour
         
         yield return new WaitForSeconds(1f);
         OnDeath?.Invoke();
-       
+
 
     }
+
+    
+    IEnumerator finish()
+    {
+       OnFinish?.Invoke();
+       yield return new WaitForSeconds(0.01f);
+        
+      SceneManager.LoadScene("CreditsMenu");
+
+
+    }
+
+
+
+
     void Statistics()
     {
         distance += myData.SpeedPlayer * Time.deltaTime;
@@ -270,6 +301,7 @@ public class PlayerController : MonoBehaviour
         return tm;
 
     }
+   
 
 
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefab;
-    
+    [SerializeField] protected AudioClip shipFX;
+    [SerializeField] protected AudioSource shipSource;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class SpawnController : MonoBehaviour
     public void SpawnShip()
     {
         int enemyIndex = Random.Range(0, enemyPrefab.Length);
+        shipSource.PlayOneShot(shipFX);
         Instantiate(enemyPrefab[enemyIndex], transform.position, enemyPrefab[enemyIndex].transform.rotation);
         ShipsName(enemyIndex);
         

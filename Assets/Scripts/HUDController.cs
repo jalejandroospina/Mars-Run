@@ -17,7 +17,9 @@ public class HUDController : MonoBehaviour
     [SerializeField] private ItemManager mgItem;
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject GOPanel;
+    [SerializeField] private GameObject finishPanel;
     [SerializeField] private PlayerController player;
+
 
 
     
@@ -35,6 +37,7 @@ public class HUDController : MonoBehaviour
     private void Awake()
     {
         PlayerController.OnDeath += OnDeathHandler;
+        PlayerController.OnFinish += OnFinishHandler;
     }
 
 
@@ -46,9 +49,11 @@ public class HUDController : MonoBehaviour
         
         mainPanel.SetActive(true);
         GOPanel.SetActive(false);
-       
-        
-        
+        finishPanel.SetActive(false);
+
+
+
+
 
     }
 
@@ -98,7 +103,18 @@ public class HUDController : MonoBehaviour
     {
         GOPanel.SetActive(true);
         mainPanel.SetActive(false);
+        finishPanel.SetActive(false);
         PlayerController.OnDeath -= OnDeathHandler;
+    }
+    public void OnFinishHandler()
+    {
+        
+        GOPanel.SetActive(false);
+        mainPanel.SetActive(false);
+        // finishPanel.SetActive(true);
+        
+
+        PlayerController.OnFinish -= OnFinishHandler;
     }
 
 
@@ -111,7 +127,16 @@ public class HUDController : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void OnClickCreditsButton()
+    {
+        SceneManager.LoadScene("CreditsMenu");
+    }
 
+    public void  GetFinish()
+    {
+        finishPanel.SetActive(true);
+
+    }
 
 
 
