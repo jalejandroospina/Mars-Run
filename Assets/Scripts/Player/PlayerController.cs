@@ -13,24 +13,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int difficulty;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] protected PlayerData myData;
-    
-
     [SerializeField] protected AudioSource playerAudioSource;
     [SerializeField] protected AudioSource Runsfx;
-    // [SerializeField] protected AudioSource  run;
-
-
     [SerializeField] protected AudioClip jump;
     [SerializeField] protected AudioClip crash;
     [SerializeField] protected AudioClip slide;
     [SerializeField] protected AudioClip coinfx;
     [SerializeField] protected AudioClip jewelfx;
     [SerializeField] protected AudioClip boxfx;
-      
-    //[SerializeField] protected SoundManager soundManager;
+    
+
+
     private Rigidbody rb;
     private ItemManager mgItem;
-
     private float distance;
     private float time;
     private string score;
@@ -41,25 +36,17 @@ public class PlayerController : MonoBehaviour
     //Events
     public static event Action OnDeath;
     public static event Action OnFinish;
-
-
-
+    //
 
     void Start()
     {
 
-
-        
-       
-        myData.SetSpeed(6);  // Corregir seteo de variable !!!!!!!!
+        myData.SetSpeed(6);
         rb = GetComponent<Rigidbody>();
         mgItem = GetComponent<ItemManager>();
         timeOn = true;
-
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         Run(Vector3.forward);
@@ -68,15 +55,12 @@ public class PlayerController : MonoBehaviour
         Slide();
         Statistics();
 
-
-
     }
     private void Run (Vector3 direction)
     {
         Debug.Log(myData.SpeedPlayer);
         transform.position =  transform.position += direction * myData.SpeedPlayer * Time.deltaTime;
-        
-
+       
     }
 
     public virtual void MoveSide()
@@ -150,10 +134,6 @@ public class PlayerController : MonoBehaviour
          
     }
     
-
-   
-
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("coin"))
@@ -165,7 +145,6 @@ public class PlayerController : MonoBehaviour
             mgItem.countRewards(coin);
             Destroy(other.gameObject);
            
-            
         }
         if (other.gameObject.CompareTag("jewel"))
         {
@@ -231,8 +210,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
-
     }
   
    
@@ -243,23 +220,18 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Runsfx.Stop();
-            playerAudioSource.PlayOneShot(crash);
+            playerAudioSource.PlayOneShot(crash);       
             timeOn = false;
             myData.SetSpeed(0);
             animplayer.Play("Death");
             StartCoroutine(Restart());
-            
-
 
         }
     }
     IEnumerator Restart()
     {
-        
         yield return new WaitForSeconds(1f);
         OnDeath?.Invoke();
-
-
     }
 
     
@@ -267,13 +239,9 @@ public class PlayerController : MonoBehaviour
     {
        OnFinish?.Invoke();
        yield return new WaitForSeconds(0.01f);
-        
-      SceneManager.LoadScene("CreditsMenu");
-
+       SceneManager.LoadScene("CreditsMenu");
 
     }
-
-
 
 
     void Statistics()
@@ -301,16 +269,5 @@ public class PlayerController : MonoBehaviour
         return tm;
 
     }
-   
-
-
-
-
-
-
-
-
-
-
-
+  
 }

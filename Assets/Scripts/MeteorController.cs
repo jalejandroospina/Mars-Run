@@ -9,21 +9,9 @@ public class MeteorController : MonoBehaviour
     [SerializeField] protected AudioClip asteroidFX;
     [SerializeField] protected AudioSource asteroidSource;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SpawnMeteor()
     {
-        //int meteorIndex = Random.Range(0, meteorPrefab.Length);
+        
         Instantiate(meteorPrefab, transform.position, meteorPrefab.transform.rotation);
         asteroidSource.PlayOneShot(asteroidFX);
     }

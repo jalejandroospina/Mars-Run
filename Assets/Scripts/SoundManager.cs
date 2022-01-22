@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private AudioSource audioSource;
-    [SerializeField] protected AudioClip[] sounds;
+
+    [SerializeField] private AudioSource maintheme;
+    [SerializeField] private AudioSource endtheme;
+    [SerializeField] private PlayerController player;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        PlayerController.OnDeath += OnDeathHandler;
+        PlayerController.OnFinish += OnFinishHandler;
+    }
 
-    }
-    public void SelectSound(int indice, float volume)
+    public void OnDeathHandler()
     {
-        audioSource.PlayOneShot(sounds[indice], volume);
+        maintheme.Stop();
+        endtheme.Play();
+
+        PlayerController.OnDeath -= OnDeathHandler;
     }
+    public void OnFinishHandler()
+    {
+
+        maintheme.Stop();
+        PlayerController.OnFinish -= OnFinishHandler;
+    }
+
 
 }

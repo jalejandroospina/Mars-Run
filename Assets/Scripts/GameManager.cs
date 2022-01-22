@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //array de gameobject
     public static GameManager instance;
     public int scoreInstance;
 

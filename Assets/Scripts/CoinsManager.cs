@@ -6,10 +6,7 @@ public class CoinsManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject[] coinsGroup;
-    void Awake()
-    {
-      
-    }
+    
     void Start()
     {
         StartCoroutine(SpawnCoinGroup());
@@ -58,7 +55,6 @@ public class CoinsManager : MonoBehaviour
         yield return new WaitForSeconds(200f);
          Destroy(coinsGroup[5]);
          yield return new WaitForSeconds(220f);
-          Destroy(coinsGroup[6]);
-        
+          Destroy(coinsGroup[6]); 
     }
 }

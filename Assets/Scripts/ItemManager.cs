@@ -5,26 +5,16 @@ using System;
 
 public class ItemManager : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     [SerializeField] private Stack inventoryOne;
-
     [SerializeField] private int[] coinsQuantity = { 0 };
     [SerializeField] private int[] jewelsQuantity = { 0 };
     [SerializeField] private int[] boxesQuantity = { 0 };
 
-    //Events
-
-
+    
     void Start()
     {
         inventoryOne = new Stack();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 

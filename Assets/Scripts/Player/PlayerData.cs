@@ -10,7 +10,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float sideSpeed;
     [SerializeField] private float jumpForce;
 
-    //GETTER
+   
 
     public float SpeedPlayer
     {

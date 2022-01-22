@@ -19,45 +19,23 @@ public class HUDController : MonoBehaviour
     [SerializeField] private GameObject GOPanel;
     [SerializeField] private GameObject finishPanel;
     [SerializeField] private PlayerController player;
-
-
-
     
 
 
-
-    // Start is called before the first frame update
-
-   
-    
-    void OnDestroy()
-    {
-     //PlayerController.OnDeath -= OnDeathHandler;
-    }
     private void Awake()
     {
         PlayerController.OnDeath += OnDeathHandler;
         PlayerController.OnFinish += OnFinishHandler;
     }
 
-
-
     void Start()
     {
-
-        
-        
         mainPanel.SetActive(true);
         GOPanel.SetActive(false);
         finishPanel.SetActive(false);
-
-
-
-
-
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateCoinsUI();
@@ -65,10 +43,6 @@ public class HUDController : MonoBehaviour
         UpdateBoxesUI();
         Statistics();
     }
-
-
-
-
 
     void UpdateCoinsUI()
     {
@@ -89,8 +63,6 @@ public class HUDController : MonoBehaviour
 
     }
 
-
-
     void Statistics()
     {
         
@@ -103,7 +75,7 @@ public class HUDController : MonoBehaviour
     {
         GOPanel.SetActive(true);
         mainPanel.SetActive(false);
-        finishPanel.SetActive(false);
+        finishPanel.SetActive(false);       
         PlayerController.OnDeath -= OnDeathHandler;
     }
     public void OnFinishHandler()
@@ -112,13 +84,8 @@ public class HUDController : MonoBehaviour
         GOPanel.SetActive(false);
         mainPanel.SetActive(false);
         // finishPanel.SetActive(true);
-        
-
         PlayerController.OnFinish -= OnFinishHandler;
     }
-
-
-
     public void OnClickPlayAgainButton()
      {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
@@ -137,7 +104,4 @@ public class HUDController : MonoBehaviour
         finishPanel.SetActive(true);
 
     }
-
-
-
 }
